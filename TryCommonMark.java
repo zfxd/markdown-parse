@@ -10,9 +10,10 @@ class TryCommonMark {
         renderer.render(document);  // "<p>This is <em>Sparta</em></p>\n"
         System.out.println(document); */
         Node node = parser.parse("Example\n=======\n\nSome more text\n[a link!](https://www.google.com/)");
-        WordCountVisitor visitor = new WordCountVisitor();
+        // WordCountVisitor visitor = new WordCountVisitor();
+        LinkVisitor visitor = new LinkVisitor();
         node.accept(visitor);
-        System.out.println(visitor.wordCount);  // 4
+        System.out.println(visitor.linkCount);  // 4
     }
 }
 
