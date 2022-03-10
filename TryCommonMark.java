@@ -12,7 +12,7 @@ class TryCommonMark {
         Node node = parser.parse("Example\n=======\n\nSome more text");
         WordCountVisitor visitor = new WordCountVisitor();
         node.accept(visitor);
-        visitor.wordCount;  // 4
+        System.out.println(visitor.wordCount);  // 4
     }
 }
 
