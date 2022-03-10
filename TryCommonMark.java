@@ -9,7 +9,7 @@ class TryCommonMark {
         HtmlRenderer renderer = HtmlRenderer.builder().build();
         renderer.render(document);  // "<p>This is <em>Sparta</em></p>\n"
         System.out.println(document); */
-        Node node = parser.parse("Example\n=======\n\nSome more text");
+        Node node = parser.parse("Example\n=======\n\nSome more text\n[a link!](https://www.google.com/)");
         WordCountVisitor visitor = new WordCountVisitor();
         node.accept(visitor);
         System.out.println(visitor.wordCount);  // 4
@@ -28,5 +28,14 @@ class WordCountVisitor extends AbstractVisitor {
 
         // Descend into children (could be omitted in this case because Text nodes don't have children).
         visitChildren(text);
+    }
+}
+class LinkVisitor extends AbstractVisitor{
+    int linkCount = 0;
+
+    @Override
+    public void visit(Link link)
+    {
+        linkCount++;
     }
 }
